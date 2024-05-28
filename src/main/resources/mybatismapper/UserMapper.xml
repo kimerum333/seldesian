@@ -7,6 +7,6 @@
 <mapper namespace="tales.akiba.seldesian.dao.UserMapper">
  	<select id="selectWelcome" resultType="string">
 		SELECT *
-		FROM tlb_users
+		FROM tlb_users 
 	</select>						
 </mapper>

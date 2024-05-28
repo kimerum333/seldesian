@@ -13,7 +13,7 @@ public class UserController {
 	@Autowired
 	UserService userService;
 	
-	// 유저가져오기 
+	// 유저가져오기
 	@RequestMapping("/seldesian")
 	public String seldesian() {
 		

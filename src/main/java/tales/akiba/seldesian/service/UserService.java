@@ -11,7 +11,7 @@ public class UserService {
 	@Autowired
 	UserMapper userDao;
 	
-	// 유저 서비스 
+	// 유저 서비스
 	public String userReturner() {
 		return userDao.userCheak();
 	}
