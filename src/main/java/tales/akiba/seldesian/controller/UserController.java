@@ -38,7 +38,7 @@ public class UserController {
 		return  "/seldesian/view";    
 	}
 	
-	//회원가입  /User/WriteForm
+	//회원가입
 	@RequestMapping("/seldesian/WriteForm")
 	public  String  writeform(){
 	
