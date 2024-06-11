@@ -35,7 +35,7 @@ public class UserController {
 		UserVo user = userService.getUser( vo );
 		model.addAttribute("user", user);
 		
-		return  "user/view";    
+		return  "/seldesian/view";    
 	}
 	
 	//회원가입  /User/WriteForm
