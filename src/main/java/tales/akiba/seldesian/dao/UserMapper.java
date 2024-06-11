@@ -1,11 +1,20 @@
 package tales.akiba.seldesian.dao;
 
-import org.apache.ibatis.annotations.Mapper;
+import java.util.List;
 
-@Mapper
+import tales.akiba.seldesian.vo.UserVo;
+
+
 public interface UserMapper {
-	
-	//유저체크
-	public String userCheak();
+
+	public List<UserVo> getUserList();
+
+	public void insertUser(UserVo vo);
+
+	public void deleteUser(UserVo vo);
+
+	public UserVo getUser(UserVo vo);
+
+	public void updateUser(UserVo vo);
 
 }

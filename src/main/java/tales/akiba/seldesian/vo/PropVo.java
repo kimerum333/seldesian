@@ -1,7 +1,7 @@
-package tales.akiba.seldesian.dto;
+package tales.akiba.seldesian.vo;
 
-public class PropDto {
-	public PropDto(int prop_no, String prop_name, int prop_rank, String prop_tag_area, String prop_tag_type,
+public class PropVo {
+	public PropVo(int prop_no, String prop_name, int prop_rank, String prop_tag_area, String prop_tag_type,
 			String prop_tag_elment, String prop_detection_dc, String prop_analysis_dc, String prop_release_dc,
 			String prop_effect, int tag_no) {
 		super();

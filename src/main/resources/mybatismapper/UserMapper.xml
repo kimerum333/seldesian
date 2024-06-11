@@ -4,9 +4,67 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <!-- SQL Mapping -->
-<mapper namespace="tales.akiba.seldesian.dao.UserMapper">
- 	<select id="selectWelcome" resultType="string">
-		SELECT *
-		FROM tlb_users 
-	</select>						
+<mapper namespace="tales.akiba.seldesian.dao.UserMapper">		
+	
+	<!-- 회원가입 -->
+	 <insert id="UserInsert">  
+       INSERT INTO TLB_USERS  (
+		    EMAIL,
+		    USER_NICKNAME,
+		    USER_PASSWORD,
+		    USER_COMENT
+		) VALUES (
+		    #{ email     },
+		    #{ user_nickname  },
+		    #{ user_password  },
+		    #{ user_coment  }
+		)         
+   </insert>
+   
+   <!-- 회원목록조회 -->
+   <select id="getUserList"
+           resultType="tales.akiba.seldesian.vo.UserVo">
+      SELECT  
+        EMAIL,
+        USER_NICKMAME,
+        TO_CHAR(INDATE, 'YYYY-MM-DD') USER_INDATE
+	  FROM  TLB_USERS 
+	  ORDER BY USER_INDATE
+   </select>
+   
+   <!-- 회원개인조회 -->
+   <select id="getUser"
+           resultType="tales.akiba.seldesian.dto.UserDto">
+      SELECT  
+        EMAIL,
+        USER_NICKMAME,
+        USER_COMENT,
+        TO_CHAR(INDATE, 'YYYY-MM-DD') USER_INDATE,
+        TO_CHAR(INDATE, 'YYYY-MM-DD') USER_EDITDATE,
+	  FROM  TLB_USERS 
+      WHERE  EMAIL = #{ EMAIL }
+   </select>
+   
+   <!-- 회원삭제 -->
+   <delete id="UserDelete">
+      
+      DELETE 
+        FROM   TLB_USER
+        WHERE  EMAIL = #{email}
+   
+   </delete>
+ 
+   <!-- 회원수정 -->
+   <update id="UserUpdate">
+   
+   	   UPDATE  TLB_USER
+   	     SET   
+                   USER_NICKNAME    =  #{ user_nickname },
+                   USER_PASSWORD    =  #{ user_password },
+   	           USER_COMENT      =  #{ user_coment },
+                   USER_EDITDATE    =  #{ user_EDITDATE}	     
+   	    WHERE  EMAIL    =  #{ email } 
+   
+   </update>
+   		
 </mapper>

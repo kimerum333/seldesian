@@ -1,7 +1,7 @@
-package tales.akiba.seldesian.dto;
+package tales.akiba.seldesian.vo;
 
-public class TagDto {
-	public TagDto(int tag_no, String tag, int tag_code, String tag_categori) {
+public class TagVo {
+	public TagVo(int tag_no, String tag, int tag_code, String tag_categori) {
 		super();
 		this.tag_no = tag_no;
 		this.tag = tag;

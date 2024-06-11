@@ -1,8 +1,8 @@
-package tales.akiba.seldesian.dto;
+package tales.akiba.seldesian.vo;
 
-public class PrefixedDto {
+public class PrefixedVo {
 	
-	public PrefixedDto(int prefixed_no, String prefixed_name, String prefixed_tag, int prefixed_magic_grade,
+	public PrefixedVo(int prefixed_no, String prefixed_name, String prefixed_tag, int prefixed_magic_grade,
 			String prefixed_effect, int prefixed_overlapping, int tag_no) {
 		super();
 		this.prefixed_no = prefixed_no;

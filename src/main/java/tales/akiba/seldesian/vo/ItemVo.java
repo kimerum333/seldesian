@@ -1,8 +1,8 @@
-package tales.akiba.seldesian.dto;
+package tales.akiba.seldesian.vo;
 
-public class ItemDto {
+public class ItemVo {
 	
-	public ItemDto(int item_no, String item_name, int item_rank, int item_magic_grade, int item_magic_prise,
+	public ItemVo(int item_no, String item_name, int item_rank, int item_magic_grade, int item_magic_prise,
 			String item_tag_alignment, String item_tag_usage, String item_tag_other, int item_class, int item_trade,
 			int equipmen_item_data_no, int equipment_item_offense_power, int equipment_item_mana_power,
 			int equipment_item_p_defense, int equipment_item_m_defense, int equipment_item_accuracy,
