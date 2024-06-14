@@ -1,4 +1,4 @@
-package tales.akiba.seldesian.vo;
+package tales.akiba.item.vo;
 
 public class ItemVo {
 	
