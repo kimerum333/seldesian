@@ -1,4 +1,4 @@
-package tales.akiba.seldesian.vo;
+package tales.akiba.item.vo;
 
 public class TagVo {
 	public TagVo(int tag_no, String tag, int tag_code, String tag_categori) {

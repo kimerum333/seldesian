@@ -1,4 +1,4 @@
-package tales.akiba.seldesian.vo;
+package tales.akiba.prop.vo;
 
 public class PropVo {
 	public PropVo(int prop_no, String prop_name, int prop_rank, String prop_tag_area, String prop_tag_type,
