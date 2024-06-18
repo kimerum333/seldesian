@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- mapper DTD 선언 -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- SQL Mapping -->
+<mapper namespace="tales.akiba.seldesian.dao.UnionMapper">
+	
+	<sql id="unionColumns">
+		union_no
+		,union_name
+		,union_lv
+		,union_profile
+		,union_lv_battle
+		,union_lv_trade
+		,union_lv_reputation
+		,union_lv_life
+		,union_expower
+		,union_ticket
+		,union_resister_yn
+		,union_indate
+		,union_editdate
+		,union_deletedate
+	</sql>
+	
+	
+	<insert id="insertUnion" parameterType="tales.akiba.seldesian.entity.Union">
+		INSERT INTO union_data (
+		<include refid="unionColumns"/>
+		) VALUES (
+		NULL
+		,#{union_name}
+		,1
+		,#{union_profile}
+		,0
+		,0
+		,0
+		,0
+		,NULL
+		,0
+		,0
+		,NOW()
+		,NULL
+		,NULL
+		)
+	</insert>
+	
+	<select id="selectUnionDetail" parameterType="long" resultType="tales.akiba.seldesian.entity.Union">
+		SELECT
+		<include refid="unionColumns"/>
+		FROM
+		union_data
+		WHERE
+		union_no = #{union_no}
+	</select>
+	
+	<update id="updateUnion" parameterType="tales.akiba.seldesian.entity.Union">
+		UPDATE union_data
+		SET
+			union_editdate = NOW()
+			,union_name = #{union_name}
+			,union_lv = #{union_lv}
+			,union_profile = #{union_profile}
+			,union_lv_battle = #{union_lv_battle}
+			,union_lv_trade = #{union_lv_trade}
+			,union_lv_reputation = #{union_lv_reputation}
+			,union_lv_life = #{union_lv_life}
+			,union_expower = #{union_expower}
+			,union_ticket = #{union_ticket}
+			,union_resister_yn = #{union_resister_yn}
+		WHERE
+			union_resister_yn = '1'
+		AND
+			union_no = #{union_no}
+	</update>
+	
+	<update id="confirmUnion" parameterType="long">
+		UPDATE union_data
+		SET
+			union_resister_yn = '1'
+			,union_editdate = NOW()
+		WHERE
+			union_no = #{union_no}
+	</update>
+	
+	<update id="deleteUnion" parameterType="long">
+		UPDATE union_data
+		SET
+			union_resister_yn = '2'
+			,union_deletedate = NOW()
+		WHERE
+			union_no = #{union_no}
+	</update>
+	
+	<select id="selectUnionList" parameterType="tales.akiba.seldesian.entity.Union" resultType="int">
+		SELECT
+		<include refid="unionColumns"/>
+		FROM
+			union_data
+		WHERE
+			union_resister_yn = '1'
+		ORDER_BY
+			union_no DESC
+			,union_indate DESC
+	</select>
+	
+	<select id="selectBoardTotalCount" parameterType="tales.akiba.seldesian.entity.Union" resultType="int">
+		SELECT
+			COUNT(*)
+		FROM
+			union_data
+		WHERE
+			union_resister_yn = '1'
+	</select>
+	
+</mapper>
