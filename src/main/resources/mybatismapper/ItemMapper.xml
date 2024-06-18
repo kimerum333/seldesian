@@ -6,9 +6,9 @@
 <!-- SQL Mapping -->
 <mapper namespace="tales.akiba.seldesian.dao.UserMapper">		
 	
-	<!-- 회원가입 -->
-	 <insert id="UserInsert">  
-       INSERT INTO TLB_USERS  (
+	<!-- 아이템 추가 -->
+	 <insert id="ItemInsert">  
+       INSERT INTO TLB_ITEM_DATA  (
 		    EMAIL,
 		    USER_NICKNAME,
 		    USER_PASSWORD,
@@ -21,49 +21,49 @@
 		)         
    </insert>
    
-   <!-- 회원목록조회 -->
-   <select id="getUserList"
-           resultType="tales.akiba.seldesian.vo.UserVo">
+   <!-- 아이템리스트 -->
+   <select id="getItemList"
+           resultType="tales.akiba.seldesian.vo.ItemVo">
       SELECT  
         EMAIL,
         USER_NICKMAME,
         TO_CHAR(INDATE, 'YYYY-MM-DD') USER_INDATE
-	  FROM  TLB_USERS 
-	  ORDER BY USER_INDATE
+	  FROM  TLB_ITEM_DATA 
+	  ORDER BY ITEM_NO
    </select>
    
-   <!-- 회원개인조회 -->
-   <select id="getUser"
-           resultType="tales.akiba.seldesian.vo.UserVo">
+   <!-- 아이템 정보 보기 -->
+   <select id="getItem"
+           resultType="tales.akiba.seldesian.dto.ItemDto">
       SELECT  
         EMAIL,
         USER_NICKMAME,
         USER_COMENT,
         TO_CHAR(INDATE, 'YYYY-MM-DD') USER_INDATE,
-        TO_CHAR(INDATE, 'YYYY-MM-DD') USER_EDITDATE
-	  FROM  TLB_USERS 
-      WHERE  EMAIL = #{ EMAIL }
+        TO_CHAR(INDATE, 'YYYY-MM-DD') USER_EDITDATE,
+	  FROM  TLB_ITEM_DATA 
+      WHERE  ITEM_NO = #{item_no}
    </select>
    
-   <!-- 회원삭제 -->
-   <delete id="UserDelete">
+   <!-- 아이템삭제 -->
+   <delete id="ItemDelete">
       
       DELETE 
-        FROM   TLB_USER
-        WHERE  EMAIL = #{email}
+        FROM   TLB_ITEM_DATA
+        WHERE  ITEM_NO = #{item_no}
    
    </delete>
  
-   <!-- 회원수정 -->
-   <update id="UserUpdate">
+   <!-- 아이템수정 -->
+   <update id="ItemUpdate">
    
-   	   UPDATE  TLB_USER
+   	   UPDATE  TLB_ITEM_DATA
    	     SET   
                    USER_NICKNAME    =  #{ user_nickname },
                    USER_PASSWORD    =  #{ user_password },
-   	               USER_COMENT      =  #{ user_coment },
-                   USER_EDITDATE    =  SYSDATE	     
-   	    WHERE  EMAIL    =  #{ email } 
+   	           USER_COMENT      =  #{ user_coment },
+                   USER_EDITDATE    =  #{ user_EDITDATE}	     
+   	    WHERE  ITEM_NO = #{item_no}
    
    </update>
    		

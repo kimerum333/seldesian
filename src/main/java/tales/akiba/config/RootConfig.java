@@ -31,9 +31,9 @@ public class RootConfig {
 	private DataSource dataSource() {
 		HikariConfig hikariConfig = new HikariConfig();
 		hikariConfig.setDriverClassName("net.sf.log4jdbc.sql.jdbcapi.DriverSpy");
-		hikariConfig.setJdbcUrl("jdbc:log4jdbc:mysql://127.0.0.1:3306/toy");
-		hikariConfig.setUsername("toy");
-		hikariConfig.setPassword("toy");
+		hikariConfig.setJdbcUrl("jdbc:log4jdbc:mysql://127.0.0.1:3306");
+		hikariConfig.setUsername("kuon");
+		hikariConfig.setPassword("seldesian1!");
 		
 		HikariDataSource dataSource = new HikariDataSource(hikariConfig);
 		
