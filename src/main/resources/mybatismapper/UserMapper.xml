@@ -5,6 +5,7 @@
 
 <!-- SQL Mapping -->
 <mapper namespace="tales.akiba.seldesian.dao.UserMapper">		
+
 	
 	<!-- 회원가입 -->
 	 <insert id="UserInsert">  
@@ -66,5 +67,5 @@
    	    WHERE  EMAIL    =  #{ email } 
    
    </update>
-   		
+   
 </mapper>

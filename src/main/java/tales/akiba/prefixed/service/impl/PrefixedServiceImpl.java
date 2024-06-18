@@ -3,11 +3,13 @@ package tales.akiba.prefixed.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import tales.akiba.prefixed.dao.PrefixedMapper;
 import tales.akiba.prefixed.service.PrefixedService;
 import tales.akiba.prefixed.vo.PrefixedVo;
 
+@Service("prefixedService")
 public class PrefixedServiceImpl implements PrefixedService {
 	
 	@Autowired

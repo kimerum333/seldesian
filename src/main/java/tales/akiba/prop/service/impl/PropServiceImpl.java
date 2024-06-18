@@ -3,11 +3,13 @@ package tales.akiba.prop.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import tales.akiba.prop.dao.PropMapper;
 import tales.akiba.prop.service.PropService;
 import tales.akiba.prop.vo.PropVo;
 
+@Service("propService")
 public class PropServiceImpl implements PropService {
 	
 	@Autowired
