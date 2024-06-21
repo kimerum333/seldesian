@@ -17,7 +17,7 @@ import lombok.ToString;
 @RequiredArgsConstructor
 @Data
 public class User {
-
+ 
     private String user_password;
     private String user_coment;
     private String user_editdate;

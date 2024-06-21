@@ -27,7 +27,7 @@ public class Prop {
 	private String prop_release_dc;
 	private String prop_effect;
 	private int tag_no;
-
+ 
 	@NonNull
 	private int prop_no;
 	private String prop_name;

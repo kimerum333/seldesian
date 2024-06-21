@@ -21,7 +21,7 @@ public class Prefixed {
 	private String prefixed_tag;
 	private int prefixed_magic_grade;
 	private int tag_no;
-
+ 
 	@NonNull
 	private int prefixed_no;
 	private String prefixed_name;
