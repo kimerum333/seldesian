@@ -1,20 +1,7 @@
 package tales.akiba.seldesian.entity;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
 
-@Getter
-@Setter
-@ToString
-@NoArgsConstructor
-@AllArgsConstructor
-@RequiredArgsConstructor
 @Data
 public class Item {
 
@@ -43,7 +30,6 @@ public class Item {
 	private int act_no;
 	private int prefixed_no;
 	 
-	@NonNull
 	private int item_no;
 	private String item_name;
 	private int item_rank;

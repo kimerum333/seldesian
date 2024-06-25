@@ -1,20 +1,7 @@
 package tales.akiba.seldesian.entity;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
 
-@Getter
-@Setter
-@ToString
-@NoArgsConstructor
-@AllArgsConstructor
-@RequiredArgsConstructor
 @Data
 public class Prop {
 	
@@ -27,8 +14,7 @@ public class Prop {
 	private String prop_release_dc;
 	private String prop_effect;
 	private int tag_no;
- 
-	@NonNull
+
 	private int prop_no;
 	private String prop_name;
 }

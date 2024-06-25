@@ -9,14 +9,13 @@ import tales.akiba.seldesian.entity.User;
 @Mapper
 public interface UserMapper {
 
-	void insertUser(User user);
+    void insertUser(User user);
 
-	List<User> getUserList();
+    List<User> getUserList();
 
-	void deleteUser(User user);
+    void deleteUser(User user);
 
-	User getView(User user);
+    User getView(User user);
 
-	void updateUser(User user);
-
+    void updateUser(User user);
 }

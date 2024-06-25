@@ -1,8 +1,19 @@
 package tales.akiba.seldesian.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
-@Data
+@Getter
+@Setter
+@ToString
+@NoArgsConstructor
+@AllArgsConstructor
+@RequiredArgsConstructor
 public class User {
     
     private String user_password;
@@ -17,7 +28,5 @@ public class User {
     private int user_gmcount;
     private String user_indate;
     private int user_statement;
-    
-    public User() {}
-
+	public void setEmail(String email2) {}
 }

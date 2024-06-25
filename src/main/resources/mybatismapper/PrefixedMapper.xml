@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- mapper DTD 선언 -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- SQL Mapping -->
+<mapper namespace="tales.akiba.seldesian.dao.PrefixedMapper">		
+	
+	<!-- 프리픽스드 추가 -->
+	 <insert id="PrefixedInsert" parameterType="tales.akiba.seldesian.entity.Prefixed">  
+       INSERT INTO TBL_PREFIXED  (
+        PREFIXED_NO,
+        PREFIXED_NAME,
+        PREFIXED_TAG,
+        PREFIXED_MAGIC_GRADE,
+        PREFIXED_EFFECT,
+        PREFIXED_OVERLAPPING,
+        TAG_NO
+		) VALUES (
+		    ( SELECT NVL(MAX(IDX), 0)+1  FROM  TLB_PREFIXED ),
+		    #{ prefixed_name  },
+		    #{ prefixed_tag  },
+		    #{ prefixed_magic_grade  },
+		    #{ prefixed_effect  },
+		    #{ prefixed_overlapping  },
+		    #{ tag_no  }
+		)         
+   </insert>
+   
+   <!-- 프리픽스드목록 -->
+   <select id="getPrefixedList"
+           resultType="tales.akiba.seldesian.entity.Prefixed">
+      SELECT  
+        PREFIXED_NAME,
+        PREFIXED_TAG,
+        PREFIXED_MAGIC_GRADE,
+        PREFIXED_EFFECT
+	  FROM  TBL_PREFIXED 
+	  ORDER BY PREFIXED_MAGIC_GRADE  ASC,  PREFIXED_NAME  ASC 
+   </select>
+   
+   <!-- 프리픽스드 개별조회 -->
+   <select id="getPrefixed"
+           resultType="tales.akiba.seldesian.entity.Prefixed">
+      SELECT  
+        PREFIXED_NAME,
+        PREFIXED_TAG,
+        PREFIXED_MAGIC_GRADE,
+        PREFIXED_EFFECT
+	  FROM  TBL_PREFIXED 
+      WHERE  PREFIXED_NO    =  #{ prefixed_no } 
+   </select>
+   
+   <!-- 프리픽스드삭제 -->
+   <delete id="deletePrefixed">
+      
+      DELETE 
+        FROM   TBL_PREFIXED
+        WHERE  PREFIXED_NO    =  #{ prefixed_no } 
+   
+   </delete>
+ 
+   <!-- 프리픽스드수정 -->
+   <update id="updatePrefixed" parameterType="tales.akiba.seldesian.entity.Prefixed">
+   
+   	   UPDATE  TBL_PREFIXED
+   	     SET
+                   PREFIXED_NAME           =  #{ prefixed_name },   
+                   PREFIXED_TAG            =  #{ prefixed_tag },
+                   PREFIXED_MAGIC_GRADE    =  #{ prefixed_magic_grade },
+   	               PREFIXED_EFFECT         =  #{ prefixed_effect },
+                   PREFIXED_OVERLAPPING    =  #{ prefixed_overlapping },
+                   TAG_NO                  =  #{ tag_no }		     
+   	    WHERE  PREFIXED_NO    =  #{ prefixed_no } 
+   
+   </update>
+   		
+</mapper>
