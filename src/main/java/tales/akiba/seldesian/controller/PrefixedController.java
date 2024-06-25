@@ -57,7 +57,7 @@ public class PrefixedController {
         return "redirect:/Prefixed/List";
     }
 
-    // 회원정보 수정 폼
+    // 프롭정보 수정 폼
     @GetMapping("/UpdateForm")
     public Prefixed updateForm(@RequestBody Prefixed prefixed, Model model) {
         Prefixed prefixeddata = prefixedService.getView(prefixed);

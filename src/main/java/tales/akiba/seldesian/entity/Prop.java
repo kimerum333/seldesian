@@ -1,8 +1,20 @@
 package tales.akiba.seldesian.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 @Data
+@Getter
+@Setter
+@ToString
+@NoArgsConstructor
+@AllArgsConstructor
+@RequiredArgsConstructor
 public class Prop {
 	
 	private int prop_rank;
@@ -17,4 +29,5 @@ public class Prop {
 
 	private int prop_no;
 	private String prop_name;
+	public void setProp_No(String prop_no2) {}
 }

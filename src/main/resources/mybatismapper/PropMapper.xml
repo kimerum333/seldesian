@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- mapper DTD 선언 -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- SQL Mapping -->
+<mapper namespace="tales.akiba.seldesian.dao.PropMapper">		
+	
+	<!-- 프롭등록 -->
+	 <insert id="PropInsert" parameterType="tales.akiba.seldesian.entity.Prop">  
+       INSERT INTO TLB_PROP  (
+        PROP_NO,
+        PROP_NAME,
+        PROP_RANK,
+        PROP_TAG_AREA,
+        PROP_TAG_TYPE,
+        PROP_TAG_ELMENT,
+        PROP_DETECTION_DC,
+        PROP_ANALYSIS_DC,
+        PROP_RELEASE_DC,
+        PROP_EFFECT,
+        TAG_NO INT,
+		) VALUES (
+		    ( SELECT NVL(MAX(IDX), 0)+1  FROM  TLB_PREFIXED ),
+			#{ prop_name  },
+		    #{ prop_rank  },
+		    #{  prop_tag_area  },
+			#{ prop_tag_type  },
+		    #{ prop_tag_elment  },
+		    #{ prop_detection_dc  },
+		    #{ prop_analysis_dc  },
+		    #{ prop_release_dc  },
+		    #{ prop_effect  },
+		    #{ tag_no  }
+		)         
+   </insert>
+   
+   <!-- 프롭목록조회 -->
+   <select id="getPropList"
+           resultType="tales.akiba.seldesian.entity.Prop">
+      SELECT  
+        PROP_NAME,
+        PROP_RANK,
+        PROP_TAG_AREA,
+        PROP_TAG_TYPE,
+        PROP_TAG_ELMENT
+	  FROM  TBL_PROP 
+	  ORDER BY PROP_NO
+   </select>
+   
+   <!-- 프롭 상세 데이터 조회 -->
+   <select id="getProp"
+           resultType="tales.akiba.seldesian.entity.Prop">
+      SELECT  
+        PROP_NAME,
+        PROP_RANK,
+        PROP_TAG_AREA,
+        PROP_TAG_TYPE,
+        PROP_TAG_ELMENT,
+        PROP_DETECTION_DC,
+        PROP_ANALYSIS_DC,
+        PROP_RELEASE_DC,
+        PROP_EFFECT
+	  FROM  TBL_PROP 
+      WHERE  PROP_NO = #{ prop_no }
+   </select>
+   
+   <!-- 프롭 삭제 -->
+   <delete id="PropDelete">
+      
+      DELETE 
+        FROM   TBL_PROP
+        WHERE  PROP_NO = #{ prop_no }
+   
+   </delete>
+ 
+   <!-- 프롭 수정 -->
+   <update id="PropUpdate" parameterType="tales.akiba.seldesian.entity.Prop">
+   
+   	   UPDATE  TBL_PROP
+   	     SET   
+   	               PROP_NAME          =  #{ prop_name },
+                   PROP_RANK          =  #{ prop_rank },
+   	               PROP_TAG_AREA      =  #{ prop_tag_area },
+   	               PROP_TAG_TYPE      =  #{ prop_tag_type },
+                   PROP_TAG_ELMENT    =  #{ prop_tag_elment },
+   	               PROP_DETECTION_DC  =  #{ prop_detection_dc },
+                   PROP_ANALYSIS_DC   =  #{ prop_analysis_dc },
+                   PROP_RELEASE_DC    =  #{ prop_release_dc },
+   	               PROP_EFFECT        =  #{ prop_effect },
+                   TAG_NO INT         =  #{ tag_no }	     
+   	    WHERE  PROP_NO = #{ prop_no }
+   
+   </update>
+   		
+</mapper>
