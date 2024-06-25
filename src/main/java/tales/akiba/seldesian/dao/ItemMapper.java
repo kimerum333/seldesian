@@ -1,5 +1,8 @@
 package tales.akiba.seldesian.dao;
 
-public class ItemMapper {
+import org.apache.ibatis.annotations.Mapper;
+
+@Mapper
+public interface ItemMapper {
 
 }

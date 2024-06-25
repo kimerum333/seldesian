@@ -1,5 +1,7 @@
 package tales.akiba.seldesian.service.impl;
 
-public class ItemServiceImpl {
+import tales.akiba.seldesian.service.ItemService;
+
+public class ItemServiceImpl implements ItemService {
 
 }

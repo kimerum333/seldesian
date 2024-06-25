@@ -1,5 +1,7 @@
 package tales.akiba.seldesian.service.impl;
 
-public class PropServiceImpl {
+import tales.akiba.seldesian.service.PropService;
+
+public class PropServiceImpl implements PropService {
 
 }

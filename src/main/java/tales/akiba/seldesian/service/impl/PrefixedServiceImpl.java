@@ -1,5 +1,7 @@
 package tales.akiba.seldesian.service.impl;
 
-public class PrefixedServiceImpl {
+import tales.akiba.seldesian.service.PrefixedService;
+
+public class PrefixedServiceImpl implements PrefixedService {
 
 }

@@ -8,8 +8,8 @@
 
 	
 	<!-- 회원가입 -->
-	 <insert id="UserInsert">  
-       INSERT INTO TLB_USERS  (
+	 <insert id="insertUser" parameterType="tales.akiba.seldesian.entity.User">  
+       INSERT INTO TBL_USERS  (
 		    EMAIL,
 		    USER_NICKNAME,
 		    USER_PASSWORD,
@@ -24,41 +24,43 @@
    
    <!-- 회원목록조회 -->
    <select id="getUserList"
-           resultType="tales.akiba.seldesian.vo.UserVo">
+           resultType="tales.akiba.seldesian.entity.User">
       SELECT  
         EMAIL,
         USER_NICKMAME,
         TO_CHAR(INDATE, 'YYYY-MM-DD') USER_INDATE
-	  FROM  TLB_USERS 
+	  FROM  TBL_USERS 
 	  ORDER BY USER_INDATE
    </select>
    
    <!-- 회원개인조회 -->
    <select id="getUser"
-           resultType="tales.akiba.seldesian.vo.UserVo">
+           resultType="tales.akiba.seldesian.entity.User">
       SELECT  
         EMAIL,
         USER_NICKMAME,
         USER_COMENT,
         TO_CHAR(INDATE, 'YYYY-MM-DD') USER_INDATE,
         TO_CHAR(INDATE, 'YYYY-MM-DD') USER_EDITDATE
-	  FROM  TLB_USERS 
+	  FROM  TBL_USERS 
       WHERE  EMAIL = #{ EMAIL }
    </select>
    
    <!-- 회원삭제 -->
-   <delete id="UserDelete">
+   <delete id="deleteUser">
       
-      DELETE 
-        FROM   TLB_USER
+   	   UPDATE  TBL_USER 
+   	     SET   
+                   USER_STATEMENT    =  2,
+                   USER_EDITDATE    =  SYSDATE
         WHERE  EMAIL = #{email}
    
    </delete>
  
    <!-- 회원수정 -->
-   <update id="UserUpdate">
+   <update id="UserUpdate" parameterType="tales.akiba.seldesian.entity.User">
    
-   	   UPDATE  TLB_USER
+   	   UPDATE  TBL_USER
    	     SET   
                    USER_NICKNAME    =  #{ user_nickname },
                    USER_PASSWORD    =  #{ user_password },
