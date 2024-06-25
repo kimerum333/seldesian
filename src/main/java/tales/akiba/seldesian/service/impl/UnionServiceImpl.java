@@ -17,15 +17,8 @@ public class UnionServiceImpl implements UnionService{
 	private UnionMapper unionMapper;
 	
 	@Override
-	public boolean registerUnion(Union params) {
-		int queryResult = 0;
-		if(params.getUnion_no() == null) {
-			queryResult = unionMapper.insertUnion(params);
-		} else {
-			queryResult = unionMapper.updateUnion(params);
-		}
-		// 1이면 true, 아니면 false
-		return queryResult == 1;
+	public Union registerUnion(Union params) {
+		return unionMapper.insertUnion(params);
 	}
 
 	@Override
@@ -34,29 +27,18 @@ public class UnionServiceImpl implements UnionService{
 	}
 	
 	@Override
-	public boolean confirmUnion(Long union_no) {
-		int queryResult = 0;
-		Union union = unionMapper.selectUnionDetail(union_no);
-		// resister_yn이 0이면 신청 중, 1이면 승인됨, 2이면 삭제됨
-		if(union!=null && 0 == (union.getUnion_resister_yn())) {
-			queryResult = unionMapper.confirmUnion(union_no);
-		}
-		// 1이면 true, 아니면 false
-		return queryResult == 1;
+	public Union updateUnion(Long union_no) {
+		return unionMapper.updateUnion(union_no);
+	}
+	
+	@Override
+	public Union confirmUnion(Long union_no) {
+		return unionMapper.confirmUnion(union_no);
 	}
 
 	@Override
-	public boolean deleteUnion(Long union_no) {
-		int queryResult = 0;
-		Union union = unionMapper.selectUnionDetail(union_no);
-		// resister_yn이 0이면 신청 중, 1이면 승인됨, 2이면 삭제됨
-		if(union!=null && 0 == (union.getUnion_resister_yn())) {
-			queryResult = unionMapper.deleteUnion(union_no);
-		} else if (union!=null && 1 == (union.getUnion_resister_yn())) {
-			queryResult = unionMapper.deleteUnion(union_no);
-		}
-		// 1이면 true, 아니면 false
-		return queryResult == 1;
+	public Union deleteUnion(Long union_no) {
+		return unionMapper.deleteUnion(union_no);
 	}
 
 	@Override

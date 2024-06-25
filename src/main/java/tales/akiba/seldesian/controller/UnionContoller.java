@@ -23,21 +23,14 @@ public class UnionContoller {
 	UnionService unionService;
 
 	@PostMapping("/union/write")
-	public boolean unionWrite(@RequestParam(value = "union_no", required = false) Long union_no, Union params, Model model) {
+	public Union unionWrite(@RequestParam(value = "union_no", required = false) Long union_no, Union params, Model model) {
 		//원래 인수로 Long union만 받음
 		
 		//유니온 등록 페이지
-		if (union_no == null) {
-			model.addAttribute(("union"), new Union());
-		} else {
-			Union union = unionService.getUnionDetail(union_no);
-			if (union == null) {
-				//return "redirect:/union/list";
-			}
-			model.addAttribute("union", union);
-		}
-		boolean unionWrite = unionService.registerUnion(params);
-		//return "/union/write";
+		model.addAttribute(("union"), new Union());
+		
+		Union unionWrite = unionService.registerUnion(params);
+
 		return unionWrite;
 	}
 	
@@ -47,7 +40,6 @@ public class UnionContoller {
 		List<Union> unionList = unionService.getUnionList();
 		model.addAttribute("unionList", unionList);
 		
-		//return "union/list";
 		return unionList;
 	}
 	
@@ -66,55 +58,45 @@ public class UnionContoller {
 //		}
 		
 		model.addAttribute("union", union);
-		
-		//return "/union/view";
+
 		return union;
 	}
 	
-	@PostMapping("/union/confirm")
-	public boolean confirmUnion(@RequestParam(value="union_no", required = false) Long union_no) {
+	@PostMapping("/union/update")
+	public Union updateUnion(@RequestParam(value="union_no", required = false) Long union_no) {
 		// 유니온 승인
 
 		if (union_no == null) {
 			//올바르지 못한 접근
 			//return "redirect:/union/list";
 		}
-		boolean isConfirmed = unionService.confirmUnion(union_no);
-		try {
-			//boolean isConfirmed = unionService.confirmUnion(union_no);
-			if (isConfirmed == false) {
-				//게시글 삭제 실패
-			}
-		} catch(DataAccessException e) {
-			//DB 처리 과정에 문제
-		} catch(Exception e) {
-			//시스템 문제
+		Union isUpdated = unionService.updateUnion(union_no);
+		
+		return isUpdated;
+	}
+	
+	@PostMapping("/union/confirm")
+	public Union confirmUnion(@RequestParam(value="union_no", required = false) Long union_no) {
+		// 유니온 승인
+
+		if (union_no == null) {
+			//올바르지 못한 접근
+			//return "redirect:/union/list";
 		}
+		Union isConfirmed = unionService.confirmUnion(union_no);
 		
 		return isConfirmed;
-		//return "redirect:/union/list";
 	}
 	
 	@PostMapping("/union/delete")
-	public boolean deleteUnion(@RequestParam(value="union_no", required = false) Long union_no) {
+	public Union deleteUnion(@RequestParam(value="union_no", required = false) Long union_no) {
 		// 유니온 삭제
 		if (union_no == null) {
 			//올바르지 못한 접근
 			//return "redirect:/union/list";
 		}
-		boolean isDeleted = unionService.deleteUnion(union_no);
-		try {
-			//boolean isDeleted = unionService.deleteUnion(union_no);
-			if (isDeleted == false) {
-				//게시글 삭제 실패
-			}
-		} catch(DataAccessException e) {
-			//DB 처리 과정에 문제
-		} catch(Exception e) {
-			//시스템 문제
-		}
-		
-		//return "redirect:/union/list";
+		Union isDeleted = unionService.deleteUnion(union_no);
+
 		return isDeleted;
 	}
 }

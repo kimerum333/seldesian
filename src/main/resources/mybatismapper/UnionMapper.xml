@@ -17,7 +17,7 @@
 		,union_lv_life
 		,union_expower
 		,union_ticket
-		,union_resister_yn
+		,union_status
 		,union_indate
 		,union_editdate
 		,union_deletedate
@@ -25,7 +25,7 @@
 	
 	
 	<insert id="insertUnion" parameterType="tales.akiba.seldesian.entity.Union">
-		INSERT INTO union_data (
+		INSERT INTO tbl_union (
 		<include refid="unionColumns"/>
 		) VALUES (
 		NULL
@@ -49,13 +49,13 @@
 		SELECT
 		<include refid="unionColumns"/>
 		FROM
-		union_data
+		tbl_union
 		WHERE
 		union_no = #{union_no}
 	</select>
 	
 	<update id="updateUnion" parameterType="tales.akiba.seldesian.entity.Union">
-		UPDATE union_data
+		UPDATE tbl_union
 		SET
 			union_editdate = NOW()
 			,union_name = #{union_name}
@@ -67,50 +67,50 @@
 			,union_lv_life = #{union_lv_life}
 			,union_expower = #{union_expower}
 			,union_ticket = #{union_ticket}
-			,union_resister_yn = #{union_resister_yn}
+			,union_status = #{union_status}
 		WHERE
-			union_resister_yn = '1'
+			union_status = '1'
 		AND
 			union_no = #{union_no}
 	</update>
 	
 	<update id="confirmUnion" parameterType="long">
-		UPDATE union_data
+		UPDATE tbl_union
 		SET
-			union_resister_yn = '1'
+			union_status = '1'
 			,union_editdate = NOW()
 		WHERE
 			union_no = #{union_no}
 	</update>
 	
 	<update id="deleteUnion" parameterType="long">
-		UPDATE union_data
+		UPDATE tbl_union
 		SET
-			union_resister_yn = '2'
+			union_status = '2'
 			,union_deletedate = NOW()
 		WHERE
 			union_no = #{union_no}
 	</update>
 	
-	<select id="selectUnionList" parameterType="tales.akiba.seldesian.entity.Union" resultType="int">
+	<select id="selectUnionList" parameterType="tales.akiba.seldesian.entity.Union" resultType="hashMap">
 		SELECT
 		<include refid="unionColumns"/>
 		FROM
-			union_data
+			tbl_union
 		WHERE
-			union_resister_yn = '1'
+			union_status = '1'
 		ORDER_BY
 			union_no DESC
 			,union_indate DESC
 	</select>
 	
-	<select id="selectBoardTotalCount" parameterType="tales.akiba.seldesian.entity.Union" resultType="int">
+	<select id="selectUnionTotalCount" parameterType="tales.akiba.seldesian.entity.Union" resultType="int">
 		SELECT
 			COUNT(*)
 		FROM
-			union_data
+			tbl_union
 		WHERE
-			union_resister_yn = '1'
+			union_status = '1'
 	</select>
 	
 </mapper>

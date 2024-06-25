@@ -11,15 +11,15 @@ public interface UnionMapper {
 
 	public String selectUnion();
 	
-	public int insertUnion(Union params);
+	public Union insertUnion(Union params);
 	
 	public Union selectUnionDetail(Long union_no);
 	
-	public int updateUnion(Union params);
+	public Union updateUnion(Long union_no);
 	
-	public int confirmUnion(Long union_no);
+	public Union confirmUnion(Long union_no);
 	
-	public int deleteUnion(Long union_no);
+	public Union deleteUnion(Long union_no);
 	
 	public List<Union> selectUnionList();
 	
