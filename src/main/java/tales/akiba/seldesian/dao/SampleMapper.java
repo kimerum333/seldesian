@@ -7,3 +7,4 @@ public interface SampleMapper {
 
 	public String selectWelcome();
 }
+ 

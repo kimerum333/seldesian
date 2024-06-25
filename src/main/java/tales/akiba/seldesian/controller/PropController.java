@@ -21,7 +21,7 @@ import tales.akiba.seldesian.service.PropService;
 @RequiredArgsConstructor
 @RequestMapping("/Prop")
 public class PropController {
-
+ 
     @Autowired
     private PropService propService;
 

@@ -29,7 +29,7 @@ public class PropServiceImpl implements PropService {
 		Prop  propdata = propMapper.getView(prop);
 		
 		return  propdata;
-	}
+	} 
 
 	@Override
 	public void insertProp(Prop prop) {

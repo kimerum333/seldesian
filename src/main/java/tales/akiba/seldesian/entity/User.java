@@ -30,4 +30,4 @@ public class User {
     private String user_indate;
     private int user_statement;
 	public void setEmail(String email2) {}
-}
+} 

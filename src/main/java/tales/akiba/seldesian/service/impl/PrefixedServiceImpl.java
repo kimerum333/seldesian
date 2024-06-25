@@ -29,7 +29,7 @@ public class PrefixedServiceImpl implements PrefixedService {
 		Prefixed  prefixeddata = prefixedMapper.getView(prefixed);
 		
 		return  prefixeddata;
-	}
+	} 
 
 	@Override
 	public void insertPrefixed(Prefixed prefixed) {

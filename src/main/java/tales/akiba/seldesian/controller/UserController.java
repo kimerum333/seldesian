@@ -20,7 +20,7 @@ import tales.akiba.seldesian.service.UserService;
 @RequiredArgsConstructor
 @RequestMapping("/User")
 public class UserController {
-
+ 
     @Autowired
     private UserService userService;
 

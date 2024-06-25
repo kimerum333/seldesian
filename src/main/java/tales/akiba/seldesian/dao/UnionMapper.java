@@ -26,3 +26,4 @@ public interface UnionMapper {
 	public int selectUnionTotalCount();
 	
 }
+ 

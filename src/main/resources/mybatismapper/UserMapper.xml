@@ -7,7 +7,7 @@
 <mapper namespace="tales.akiba.seldesian.dao.UserMapper">		
 
 	
-	<!-- 회원가입 -->
+	<!-- 회원가입 --> 
 	<insert id="insertUser" parameterType="tales.akiba.seldesian.entity.User">  
        INSERT INTO TBL_USERS  (
 		    EMAIL,

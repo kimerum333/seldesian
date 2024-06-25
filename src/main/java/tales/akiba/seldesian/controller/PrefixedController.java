@@ -21,7 +21,7 @@ import tales.akiba.seldesian.service.PrefixedService;
 @RequiredArgsConstructor
 @RequestMapping("/Prefixed")
 public class PrefixedController {
-
+ 
     @Autowired
     private PrefixedService prefixedService;
 

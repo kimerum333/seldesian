@@ -6,7 +6,7 @@
 <!-- SQL Mapping -->
 <mapper namespace="tales.akiba.seldesian.dao.PrefixedMapper">		
 	
-	<!-- 프리픽스드 추가 -->
+	<!-- 프리픽스드 추가 --> 
 	 <insert id="PrefixedInsert" parameterType="tales.akiba.seldesian.entity.Prefixed">  
        INSERT INTO TBL_PREFIXED  (
         PREFIXED_NO,

@@ -15,16 +15,12 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @RequiredArgsConstructor
-public class Prefixed {
- 
-	private String prefixed_tag;
-	private int prefixed_magic_grade;
+public class Tag {
+
 	private int tag_no;
- 
-	private int prefixed_no;
-	private String prefixed_name;
-	private String prefixed_effect;
-	private int prefixed_overlapping;
-	public void setPrefixed_No(String prefixed_no2) {}
+	private String tag; 
+	private int tag_code;
+	private String tag_categori; 
 	
 }
+ 

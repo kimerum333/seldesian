@@ -31,3 +31,4 @@ public class Prop {
 	private String prop_name;
 	public void setProp_No(String prop_no2) {}
 }
+ 

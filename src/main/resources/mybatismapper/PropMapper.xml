@@ -6,7 +6,7 @@
 <!-- SQL Mapping -->
 <mapper namespace="tales.akiba.seldesian.dao.PropMapper">		
 	
-	<!-- 프롭등록 -->
+	<!-- 프롭등록 --> 
 	 <insert id="PropInsert" parameterType="tales.akiba.seldesian.entity.Prop">  
        INSERT INTO TLB_PROP  (
         PROP_NO,

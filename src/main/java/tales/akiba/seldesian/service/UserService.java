@@ -1,5 +1,5 @@
 package tales.akiba.seldesian.service;
-
+ 
 import java.util.List;
 
 import tales.akiba.seldesian.entity.User;
