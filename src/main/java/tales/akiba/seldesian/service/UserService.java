@@ -6,14 +6,14 @@ import tales.akiba.seldesian.entity.User;
 
 public interface UserService {
 
-	boolean insertUser(User user);
-
 	List<User> getUserList();
+	
+	User getView(User user);
 
-	boolean deleteUser(String email);
+	void insertUser(User user);
 
-	User getView(String email);
+	void deleteUser(User user);
 
-	void userUpdate(User user);
+	void updateUser(User user);
 
 }

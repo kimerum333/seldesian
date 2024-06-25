@@ -16,39 +16,41 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserMapper userMapper;
+
+	@Override
+	public List<User> getUserList() {
+		List<User>  userList  =  userMapper.getUserList(); 
+		return    userList;
+	}
+
+	@Override
+	public User getView(User user) {
+		
+		User  userdata = userMapper.getView(user);
+		
+		return  userdata;
+	}
+
+	@Override
+	public void insertUser(User user) {
+
+		userMapper.insertUser(user);
+		
+	}
+
+	@Override
+	public void deleteUser(User user) {
+
+       userMapper.deleteUser(user);
+		
+	}
+
+	@Override
+	public void updateUser(User user) {
+		
+		userMapper.updateUser(user);
+		
+	}
+
     
-    @Override
-    public boolean insertUser(User user) {
-        try {
-            userMapper.insertUser(user);
-            return true;
-        } catch (Exception e) {
-            return false;
-        }
-    }
-
-    @Override
-    public List<User> getUserList() {
-        return userMapper.getUserList();
-    }
-    
-    @Override
-    public User getView(String email) {
-        return userMapper.getView(email);
-    }
-
-    @Override
-    public boolean deleteUser(String email) {
-        try {
-            userMapper.deleteUser(email);
-            return true;
-        } catch (Exception e) {
-            return false;
-        }
-    }
-
-    @Override
-    public void userUpdate(User user) {
-        userMapper.updateUser(user);        
-    }
 }

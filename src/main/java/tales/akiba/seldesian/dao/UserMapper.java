@@ -13,9 +13,9 @@ public interface UserMapper {
 
 	List<User> getUserList();
 
-	void deleteUser(String email);
+	void deleteUser(User user);
 
-	User getView(String email);
+	User getView(User user);
 
 	void updateUser(User user);
 

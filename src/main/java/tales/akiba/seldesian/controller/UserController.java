@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -22,53 +23,67 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    // 회원목록조회
-    @GetMapping("/user/list")
-    public List<User> userlist() {
-        return userService.getUserList();
-    }
-
-    // 회원 정보 보기
-    @GetMapping("/user/view")
-    public User userview(@RequestParam(value = "email", required = false) String email) {
-        return userService.getView(email);
-    }
-
-    // 회원가입 처리
-    @PostMapping("/user/write")
-    public boolean write(@ModelAttribute User params) {
-        return userService.insertUser(params);
-    }
-
-    // 회원삭제
-    @PostMapping("/user/delete")
-    public boolean delete(@RequestParam(value="email", required = false) String email) {
-        if (email == null) {
-            return false; 
-        }
-        try {
-            return userService.deleteUser(email);
-        } catch (DataAccessException e) {
-            return false;
-        } catch (Exception e) {
-            return false;
-        }
-    }
-
-    // 회원정보 수정 페이지
-    @GetMapping("/updateForm")
-    public User updateForm(@RequestParam(value = "email", required = false) String email) {
-        return userService.getView(email);
-    }
-
-    // 수정 정보 저장
-    @PostMapping("/update")
-    public boolean update(@ModelAttribute User user) {
-        try {
-            userService.userUpdate(user);
-            return true;
-        } catch (Exception e) {
-            return false;
-        }
-    }
+	// 회원목록조회	 /User/List
+	@RequestMapping("/User/List")
+	public  List<User>  list( Model model  ) {
+		
+		List<User>  userList = userService.getUserList();
+		model.addAttribute( "userList" , userList);		
+		return  userList;
+	}
+	
+	//회원가입  
+	//@RequestMapping("/User/WriteForm")
+	//public  String  writeform() {
+	//	return  "user/write";
+	//}
+	
+	//회원가입 -> 저장
+	@RequestMapping("/User/Write")
+	public  String  write(	User  user ) {
+			
+		// 회원정보저장
+		userService.insertUser(user);					
+		
+		return "redirect:/user/list";   // 목록 조회
+	}
+	
+	// 회원정보보기 
+	@RequestMapping("/User/View")
+	public  String   userview( User user, Model model ) {
+		
+		User userdata = userService.getView( user );
+		model.addAttribute("user", userdata);
+		
+		return  "user/view"; 
+	}
+	
+	// 회원삭제  // /User/Delete
+	@RequestMapping("/User/Delete/{email}")
+	public   String   delete(  
+	    User user	
+		) {
+				
+		userService.deleteUser( user );
+		
+		return "redirect:/User/List";
+	}
+	
+	@RequestMapping("/User/UpdateForm")
+	public  String   updateForm(User user, Model model) {
+		
+		// 수정할 정보를 조회한다
+		User  userdata  =  userService.getView(user);
+		model.addAttribute( "user", userdata );
+		
+		return  "user/update";
+	}
+	// 수정 정보 저장
+	@RequestMapping("/User/Update")
+	public  String   update( User user ) {
+		
+		userService.updateUser( user );
+		
+		return "redirect:/User/List";
+	}
 }
