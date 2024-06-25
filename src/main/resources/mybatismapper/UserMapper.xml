@@ -61,13 +61,13 @@
    </select>
    
    <!-- 회원삭제 -->
-   <delete id="deleteUser">
+   <update id="deleteUser" parameterType="tales.akiba.seldesian.entity.User">
    	   UPDATE  TBL_USERS
    	     SET   
            USER_STATEMENT = 2,
            USER_DEDATE = NOW()
         WHERE  EMAIL = #{email}
-   </delete>
+   </update>
  
    <!-- 회원수정 -->
    <update id="updateUser" parameterType="tales.akiba.seldesian.entity.User">
