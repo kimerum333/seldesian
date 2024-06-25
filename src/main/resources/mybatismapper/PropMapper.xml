@@ -43,7 +43,7 @@
         PROP_RANK,
         PROP_TAG_AREA,
         PROP_TAG_TYPE,
-        PROP_TAG_ELMENT
+        PROP_TAG_ELMENT 
 	  FROM  TBL_PROP 
 	  ORDER BY PROP_NO
    </select>
