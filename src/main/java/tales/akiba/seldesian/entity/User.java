@@ -3,7 +3,6 @@ package tales.akiba.seldesian.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 
 @Data
@@ -16,8 +15,6 @@ public class User {
     private String user_coment;
     private String user_editdate;
     private String user_dedate;
-	
-    @NonNull
     private String email;
     private String user_nickname;
     private int user_grade;

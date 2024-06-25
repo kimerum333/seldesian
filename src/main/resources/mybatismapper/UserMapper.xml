@@ -8,66 +8,76 @@
 
 	
 	<!-- 회원가입 -->
-	 <insert id="insertUser" parameterType="tales.akiba.seldesian.entity.User">  
+	<insert id="insertUser" parameterType="tales.akiba.seldesian.entity.User">  
        INSERT INTO TBL_USERS  (
 		    EMAIL,
 		    USER_NICKNAME,
 		    USER_PASSWORD,
-		    USER_COMENT
+		    USER_COMENT,
+		    USER_GRADE,
+		    USER_CHAR_COUNT,
+		    USER_CHAR_MAXCOUNT,
+		    USER_GMCOUNT,
+		    USER_INDATE,
+		    USER_EDITDATE,
+		    USER_DEDATE,
+		    USER_STATEMENT
 		) VALUES (
-		    #{ email     },
-		    #{ user_nickname  },
-		    #{ user_password  },
-		    #{ user_coment  }
+		    #{email},
+		    #{user_nickname},
+		    #{user_password},
+		    #{user_coment},
+		    0,
+		    0,
+		    2,
+		    0,
+		    NOW(),
+		    NULL,
+		    NULL,
+		    0
 		)         
    </insert>
    
    <!-- 회원목록조회 -->
-   <select id="getUserList"
-           resultType="tales.akiba.seldesian.entity.User">
+   <select id="getUserList" resultType="tales.akiba.seldesian.entity.User">
       SELECT  
         EMAIL,
-        USER_NICKMAME,
-        TO_CHAR(INDATE, 'YYYY-MM-DD') USER_INDATE
+        USER_NICKNAME,
+        DATE_FORMAT(INDATE, '%Y-%m-%d') AS USER_INDATE
 	  FROM  TBL_USERS 
 	  ORDER BY USER_INDATE
    </select>
    
    <!-- 회원개인조회 -->
-   <select id="getUser"
-           resultType="tales.akiba.seldesian.entity.User">
+   <select id="getView" resultType="tales.akiba.seldesian.entity.User">
       SELECT  
         EMAIL,
-        USER_NICKMAME,
+        USER_NICKNAME,
         USER_COMENT,
-        TO_CHAR(INDATE, 'YYYY-MM-DD') USER_INDATE,
-        TO_CHAR(INDATE, 'YYYY-MM-DD') USER_EDITDATE
+        DATE_FORMAT(INDATE, '%Y-%m-%d') AS USER_INDATE,
+        DATE_FORMAT(EDITDATE, '%Y-%m-%d') AS USER_EDITDATE
 	  FROM  TBL_USERS 
-      WHERE  EMAIL = #{ EMAIL }
+      WHERE  EMAIL = #{email}
    </select>
    
    <!-- 회원삭제 -->
    <delete id="deleteUser">
-      
-   	   UPDATE  TBL_USER 
+   	   UPDATE  TBL_USERS
    	     SET   
-                   USER_STATEMENT    =  2,
-                   USER_EDITDATE    =  SYSDATE
+           USER_STATEMENT = 2,
+           USER_DEDATE = NOW()
         WHERE  EMAIL = #{email}
-   
    </delete>
  
    <!-- 회원수정 -->
-   <update id="UserUpdate" parameterType="tales.akiba.seldesian.entity.User">
-   
-   	   UPDATE  TBL_USER
+   <update id="updateUser" parameterType="tales.akiba.seldesian.entity.User">
+   	   UPDATE  TBL_USERS
    	     SET   
-                   USER_NICKNAME    =  #{ user_nickname },
-                   USER_PASSWORD    =  #{ user_password },
-   	               USER_COMENT      =  #{ user_coment },
-                   USER_EDITDATE    =  SYSDATE	     
-   	    WHERE  EMAIL    =  #{ email } 
-   
+           USER_NICKNAME = #{user_nickname},
+           USER_PASSWORD = #{user_password},
+   	       USER_COMENT = #{user_coment},
+           USER_EDITDATE = NOW()     
+   	    WHERE  EMAIL = #{email}
    </update>
    
 </mapper>

@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 
 import tales.akiba.seldesian.dao.SampleMapper;
 
-@Service
+@Service 
 public class SampleService {
 	
 	@Autowired

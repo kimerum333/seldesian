@@ -1,17 +1,18 @@
 package tales.akiba.seldesian.service;
 
 import java.util.List;
+
 import tales.akiba.seldesian.entity.User;
 
 public interface UserService {
 
-	void insertUser(User user);
+	boolean insertUser(User user);
 
 	List<User> getUserList();
 
-	void deleteUser(User user);
+	boolean deleteUser(String email);
 
-	User getView(User user);
+	User getView(String email);
 
 	void userUpdate(User user);
 
