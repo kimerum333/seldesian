@@ -9,12 +9,6 @@ import lombok.Setter;
 import lombok.ToString;
 
 @Data
-@Getter
-@Setter
-@ToString
-@NoArgsConstructor
-@AllArgsConstructor
-@RequiredArgsConstructor
 public class Prefixed {
  
 	private String prefixed_tag;

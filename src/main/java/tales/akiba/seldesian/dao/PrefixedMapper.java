@@ -5,7 +5,6 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 
 import tales.akiba.seldesian.entity.Prefixed;
-import tales.akiba.seldesian.entity.User;
 
 @Mapper
 public interface PrefixedMapper {

@@ -9,12 +9,6 @@ import lombok.Setter;
 import lombok.ToString;
 
 @Data
-@Getter
-@Setter
-@ToString
-@NoArgsConstructor
-@AllArgsConstructor
-@RequiredArgsConstructor
 public class Prop {
 	
 	private int prop_rank;

@@ -9,12 +9,6 @@ import lombok.Setter;
 import lombok.ToString;
 
 @Data
-@Getter
-@Setter
-@ToString
-@NoArgsConstructor
-@AllArgsConstructor
-@RequiredArgsConstructor
 public class User {
     
     private String user_password;
@@ -23,11 +17,11 @@ public class User {
     private String user_dedate;
     private String email;
     private String user_nickname;
+    private String user_indate;
     private int user_grade;
     private int user_char_count;
     private int user_char_maxcount;
     private int user_gmcount;
-    private String user_indate;
     private int user_statement;
-	public void setEmail(String email2) {}
+	public void setEmail(String email2) {} 
 } 
